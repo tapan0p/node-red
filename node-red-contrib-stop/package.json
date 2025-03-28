@@ -1,0 +1,16 @@
+{
+    "name": "node-red-contrib-stop",
+    "version": "0.0.1",
+    "description": "A custom Node-RED node called stop that marks the end of the workflow.",
+    "main": "stop.js",
+    "keywords": [
+      "node-red"
+    ],
+    "license": "MIT",
+    "node-red": {
+      "nodes": {
+        "stop": "stop.js"
+      }
+    }
+  }
+  

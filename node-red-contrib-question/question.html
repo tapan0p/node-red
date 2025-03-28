@@ -1,0 +1,53 @@
+<script type="text/x-red" data-template-name="question">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-questionText"><i class="icon-help"></i> Question</label>
+        <input type="text" id="node-input-questionText" placeholder="Enter your question">
+    </div>
+    <div class="form-row">
+        <label for="node-input-answerType"><i class="icon-list"></i> Answer Type</label>
+        <select id="node-input-answerType">
+            <option value="text">Text</option>
+            <option value="multipleChoice">Multiple Choice</option>
+            <option value="boolean">Yes/No</option>
+        </select>
+    </div>
+    <div class="form-row" id="node-input-choices-row" style="display: none;">
+        <label for="node-input-choices"><i class="icon-list"></i> Choices (comma separated)</label>
+        <input type="text" id="node-input-choices" placeholder="Choice1, Choice2, Choice3">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('question', {
+        category: 'function',
+        color: '#fdd0a2',
+        defaults: {
+            name: { value: "" },
+            questionText: { value: "" },
+            answerType: { value: "text" },
+            choices: { value: "" }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "question.png",
+        label: function() {
+            return this.name || "question";
+        },
+        oneditprepare: function() {
+            // Show or hide the choices field based on the selected answer type.
+            var updateChoicesDisplay = function() {
+                if ($("#node-input-answerType").val() === "multipleChoice") {
+                    $("#node-input-choices-row").show();
+                } else {
+                    $("#node-input-choices-row").hide();
+                }
+            };
+            $("#node-input-answerType").change(updateChoicesDisplay);
+            updateChoicesDisplay();
+        }
+    });
+</script>

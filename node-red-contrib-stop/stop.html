@@ -1,0 +1,20 @@
+<script type="text/x-red" data-template-name="stop">
+    <div class="form-row">
+        <p><strong>Stop</strong></p>
+        <p>This is the end of the workflow.</p>
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('stop', {
+        category: 'function',  // You can change the category if needed
+        color: '#d9534f',      // Red color to indicate stop/end
+        defaults: {},          // No configurable fields
+        inputs: 1,
+        outputs: 0,            // No outputs since it ends the flow
+        icon: "stop.png",      // Provide an icon file if available
+        label: function() {
+            return "Stop";
+        }
+    });
+</script>

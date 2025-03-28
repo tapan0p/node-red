@@ -1,0 +1,19 @@
+{
+    "name": "node-red-custom-project",
+    "version": "1.0.0",
+    "description": "A custom Node-RED setup with local nodes for a specific use case",
+    "private": true,
+    "author": "Your Name",
+    "license": "MIT",
+    "main": "index.js",
+    "dependencies": {
+        "node-red": "^3.1.0",
+        "node-red-contrib-dfunction": "file:node-red-contrib-dfunction",
+        "node-red-contrib-freeform": "file:node-red-contrib-freeform",
+        "node-red-contrib-function": "file:node-red-contrib-function",
+        "node-red-contrib-node_one": "file:node-red-contrib-node_one",
+        "node-red-contrib-question": "file:node-red-contrib-question",
+        "node-red-contrib-start": "file:node-red-contrib-start",
+        "node-red-contrib-stop": "file:node-red-contrib-stop"
+    }
+}

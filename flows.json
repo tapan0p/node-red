@@ -1,0 +1,190 @@
+[
+    {
+        "id": "a3f4fc65b5aabff6",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5a4d7e3385e09831",
+        "type": "start",
+        "z": "a3f4fc65b5aabff6",
+        "name": "Start",
+        "prompt": "Wait for human to speak before starting.",
+        "x": 210,
+        "y": 180,
+        "wires": [
+            [
+                "0f9b6a70a0ea02bc"
+            ]
+        ]
+    },
+    {
+        "id": "0f9b6a70a0ea02bc",
+        "type": "question",
+        "z": "a3f4fc65b5aabff6",
+        "name": "Health-sutra intro",
+        "questionText": "Thanks for calling the Health-sutra appointment scheduling line. Could I please have your first and last name?",
+        "answerType": "text",
+        "choices": "",
+        "x": 390,
+        "y": 180,
+        "wires": [
+            [
+                "d5a9dd8810a1f1fb"
+            ]
+        ]
+    },
+    {
+        "id": "d5a9dd8810a1f1fb",
+        "type": "question",
+        "z": "a3f4fc65b5aabff6",
+        "name": "new-or-returning",
+        "questionText": "Are you a new or returning patient?",
+        "answerType": "boolean",
+        "choices": "",
+        "x": 600,
+        "y": 180,
+        "wires": [
+            [
+                "7db2192c4f0532f9"
+            ]
+        ]
+    },
+    {
+        "id": "7db2192c4f0532f9",
+        "type": "switch",
+        "z": "a3f4fc65b5aabff6",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "\"yes\"",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "\"no\"",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 760,
+        "y": 180,
+        "wires": [
+            [
+                "b67842b77136e2d8"
+            ],
+            [
+                "ef3a4d4ed84f2040"
+            ]
+        ]
+    },
+    {
+        "id": "b67842b77136e2d8",
+        "type": "question",
+        "z": "a3f4fc65b5aabff6",
+        "name": "insurance",
+        "questionText": "Got it. Will you be using insurance?",
+        "answerType": "boolean",
+        "choices": "",
+        "x": 940,
+        "y": 140,
+        "wires": [
+            [
+                "dc63fe648111e6ca"
+            ]
+        ]
+    },
+    {
+        "id": "ef3a4d4ed84f2040",
+        "type": "dfunction",
+        "z": "a3f4fc65b5aabff6",
+        "name": "call-availabilities-function",
+        "functionCode": "Let me grab some available slots for the next few weeks.",
+        "x": 1410,
+        "y": 300,
+        "wires": [
+            [
+                "4febe2836ad62e92"
+            ]
+        ]
+    },
+    {
+        "id": "4febe2836ad62e92",
+        "type": "freeform",
+        "z": "a3f4fc65b5aabff6",
+        "name": "communicate_availabilities",
+        "prompt": "Communicate the available appointments to the caller: call-availabilities-function.  Do so in a natural-sounding way; don't communicate the raw information from above.   undefined  Have the caller choose from these. If they choose one, then thank them and say <|hangup|>. Otherwise, if they can't make any of them, tell them that you'll call back if slots open up. Acknowledge their response and output <|hangup|>",
+        "x": 1700,
+        "y": 200,
+        "wires": [
+            [
+                "c0db67b962f3167c"
+            ]
+        ]
+    },
+    {
+        "id": "dc63fe648111e6ca",
+        "type": "switch",
+        "z": "a3f4fc65b5aabff6",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "\"yes\"",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "\"No\"",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 1110,
+        "y": 140,
+        "wires": [
+            [
+                "954cdb5a50d6e298"
+            ],
+            [
+                "ef3a4d4ed84f2040"
+            ]
+        ]
+    },
+    {
+        "id": "954cdb5a50d6e298",
+        "type": "question",
+        "z": "a3f4fc65b5aabff6",
+        "name": "insurance-type",
+        "questionText": "Which insurance provider will you be using?",
+        "answerType": "text",
+        "choices": "",
+        "x": 1380,
+        "y": 120,
+        "wires": [
+            [
+                "ef3a4d4ed84f2040"
+            ]
+        ]
+    },
+    {
+        "id": "c0db67b962f3167c",
+        "type": "stop",
+        "z": "a3f4fc65b5aabff6",
+        "x": 1930,
+        "y": 200,
+        "wires": []
+    }
+]

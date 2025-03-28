@@ -1,0 +1,27 @@
+<script type="text/x-red" data-template-name="dfunction">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-functionCode"><i class="icon-code"></i> Function description</label>
+        <textarea id="node-input-functionCode" style="height: 200px;" placeholder="Enter function description"></textarea>
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('dfunction', {
+        category: 'function',
+        color: '#e2d96e',
+        defaults: {
+            name: { value: "" },
+            functionCode: { value: "describe dfunction" }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "function.png",
+        label: function() {
+            return this.name || "dfunction";
+        }
+    });
+</script>

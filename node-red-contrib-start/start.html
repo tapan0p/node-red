@@ -1,0 +1,27 @@
+<script type="text/x-red" data-template-name="start">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-prompt"><i class="icon-info"></i> Prompt</label>
+        <input type="text" id="node-input-prompt" placeholder="Enter prompt">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('start', {
+        category: 'function',
+        color: '#a6bbcf',
+        defaults: {
+            name: { value: "" },
+            prompt: { value: "" }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "node.png",
+        label: function() {
+            return this.name || "start";
+        }
+    });
+</script>
